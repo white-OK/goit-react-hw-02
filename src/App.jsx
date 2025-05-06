@@ -24,7 +24,6 @@ function App() {
     });
   };
   const totalFeedback = respCount.good + respCount.neutral + respCount.bad;
-  // const positiveFeedback = Math.round((respCount / totalFeedback) * 100);
 
   const positiveFeedback =
     totalFeedback > 0 ? Math.round((respCount.good / totalFeedback) * 100) : 0;
@@ -32,10 +31,7 @@ function App() {
     setrespCount({ good: 0, neutral: 0, bad: 0 });
   };
   useEffect(() => {
-    const prevCount = localStorage.getItem('respCount');
-    if (prevCount !== JSON.stringify(respCount)) {
-      localStorage.setItem('respCount', JSON.stringify(respCount));
-    }
+    localStorage.setItem('respCount', JSON.stringify(respCount));
   }, [respCount]);
 
   return (
